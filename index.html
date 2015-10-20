@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnePagePortfolio</title>
+
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <link rel="stylesheet" type="text/css" href="lib/chartist.min.css">
+
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="lib/chartjs.js"></script>
+    <script type="text/javascript" src="portfoliofactory.js"></script>
+    <script type="text/javascript" src="investmentManager.js"></script>
+    <script type="text/javascript" src="chart.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+
+
+</head>
+<body>
+
+<div class="content" ng-app="onePagePortfolio">
+    <h1>One Page Portfolio 5</h1>
+    <div ng-controller="portfolioController">
+        <div>
+            <canvas id="IncomeChart" width="430" height="300"></canvas>
+            <canvas id="NetWorthChart" width="430" height="300"></canvas>
+            <div class="IncomeChart ct-perfect-fourth"></div>
+            <div class="NetWorthChart ct-perfect-fourth"></div>
+        </div>
+
+        <div class="controls">
+            <select ng-model="newInvestmentType">
+                    <option>Salary</option>
+                    <option>Portfolio</option>
+                    <option>Expense</option>
+            </select>
+            <button class="pure-button" ng-click="addInvestment()">Add Investment</button>
+            <button class="pure-button" ng-click="recalculate()">Recalculate</button>
+            <input type="text" min="10" max="20" step="1" ng-model="yearsToCalculate" integer/>
+        </div>
+
+        <h2 ng-show="InvestmentManager.salaries.length > 0">Salaries</h2>
+        <table class="investment" ng-show="InvestmentManager.salaries.length > 0">
+            <thead>
+                <tr>
+                    <td>Initial Value ($)</td>
+                    <td>Growth Rate (%)</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in InvestmentManager.salaries">
+                    <td>
+                    <input type="text" placeholder="Initial value" ng-model="item.initialValue" integer/>
+                    </td>
+                    <td>
+                    <input type="text" min="0" max="15" ng-model="item.growthRate" integer/>
+                    </td>
+                    <td>
+                    <a class="remove" href="#" ng-click="InvestmentManager.removeInvestment(item, 'Salary')">Remove</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2  ng-show="InvestmentManager.portfolios.length > 0">Portfolios</h2>
+        <table class='investment' ng-show="InvestmentManager.portfolios.length > 0">
+            <thead>
+                <tr>
+                    <td>Initial Value ($)</td>
+                    <td>Return (%)</td>
+                    <td>Net Income Allocation (%)</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in InvestmentManager.portfolios">
+                    <td>
+                    <input type="text" placeholder="Initial value" ng-model="item.initialValue" integer/>
+                    </td>
+                    <td>
+                    <input type="text" min="0" max="15" step="1" ng-model="item.growthRate" integer/>
+                    </td>
+                    <td>
+                    <input type="text" min="0" max="100" step="1" ng-model="item.allocation" integer/>
+                    </td>
+                    <td>
+                    <a class="remove" href="#" ng-click="InvestmentManager.removeInvestment(item, 'Portfolio')">Remove</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 ng-show="InvestmentManager.expenses.length > 0">Expenses</h2>
+        <table class='investment' ng-show="InvestmentManager.expenses.length > 0">
+            <thead>
+                <tr>
+                    <td>Initial Value ($)</td>
+                    <td>Growth Rate (%)</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in InvestmentManager.expenses">
+                    <td>
+                    <input type="text" placeholder="Value" ng-model="item.initialValue" integer/>
+                    </td>
+                    <td>
+                    <input type="text" min="0" max="15" step="1" ng-model="item.growthRate" integer/>
+                    </td>
+                    <td>
+                    <a class="remove" href="#" ng-click="InvestmentManager.removeInvestment(item, 'Expense')">Remove</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+</body>
+</html>

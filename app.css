@@ -1,0 +1,79 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,600,500,300,200,100);
+
+body{
+  background-color: #fbfbfb;
+  margin: 0;
+  font-family: 'Open Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+.content{
+  width: 950px; 
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+  padding: 5px;
+
+}
+
+h1 {
+  font-weight: 100;
+  font-family: Raleway,"Droid Sans",Arial,sans-serif;
+  font-size: 64px;
+  text-align: center;
+}
+
+.controls {
+  padding: 20px;
+  text-align: center;
+}
+
+table.investment {
+  margin: 2px;
+  padding: 5px;
+  width: 100%;
+  border-collapse:collapse
+}
+
+.investment thead {
+  text-align: left;
+}
+
+table.investment tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+
+.investment ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.investment li {
+  border-top: 1px solid #aaa;
+}
+
+h2 {
+  margin-top: 0;
+  font-weight: 100;
+}
+
+button {
+  font-family: Raleway,"Droid Sans",Arial,sans-serif;
+  border-radius: 3px;
+  border: 1px;
+  padding: 7px;
+  background-color: #4C4C4C;
+  color: #FFF;
+  background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.08));
+}
+
+button:hover {
+  background-color: #4C4C4C;
+};
+
+a.remove {
+  color: red;
+  text-align: right;
+}
